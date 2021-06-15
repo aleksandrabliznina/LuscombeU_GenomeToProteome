@@ -5,7 +5,6 @@ nextflow.enable.dsl = 2
 include { LAST_LASTDB                  } from './modules/nf-core/software/last/lastdb/main.nf'     addParams( options: ['args': "${params.lastdb_args}"] )
 include { LAST_TRAIN                   } from './modules/nf-core/software/last/train/main.nf'      addParams( options: ['args':"${params.train_args}"] )
 include { LAST_LASTAL                  } from './modules/nf-core/software/last/lastal/main.nf'     addParams( options: ['args':"${params.lastal_args}"] )
-// include { LAST_SPLIT   as LAST_SPLIT_1 } from './modules/nf-core/software/last/split/main.nf'      addParams( options: ['suffix':'.05.split'] )
 include { LAST_MAFCONVERT              } from './modules/nf-core/software/last/mafconvert/main.nf' addParams( options: ['format':'gff'] )
 
 workflow {
@@ -14,7 +13,7 @@ if (params.target) {
     channel
         .from( params.target )
         .map { filename -> file(filename, checkIfExists: true) }
-        .map { row _> [ [id:'target'], row ]}
+        .map { row -> [ [id:'target'], row ]}
         .set { target }
 } else {
     channel
@@ -24,6 +23,7 @@ if (params.target) {
         .set { target }
 }
 
+// input query
 channel
     .value( params.query )
     .map { filename -> file(filename, checkIfExists: true) }
