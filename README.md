@@ -2,26 +2,28 @@
 
 ## Mandatory parameters
 
- * `--target`: path to one genome file in FASTA format.  It will be indexed.
-
- * `--input`: path to a sample sheet in tab-separated format with one header
-   line `id	file`, and one row per genome (ID and path to FASTA file).
+ * `--target`: path to one proteome file in FASTA format.
 
    — or —
 
-   `--query`: patch to one genome file in FASTA format.
+   `--input`: path to a sample sheet in tab-separated format with one header
+   line `id	file`, and one row per proteome (ID and path to FASTA file).
+
+
+ * `--query`: path to one genome file in FASTA format.
 
 ## Options
 
- * `--seeding_scheme` selects the name of the [LAST seed](https://gitlab.com/mcfrith/last/-/blob/main/doc/last-seeds.rst)
-   The default (`NEAR`) searches for “_short-and-strong (near-identical)
-   similarities_ … _with many gaps (insertions and deletions)_”.  Among
-   alternatives, there is `YASS` for “_long-and-weak similarities_” that
-   “_allow for mismatches but not gaps_”.
-
- * `--lastal_args` defaults to `-E0.05 -C2` and is applied to both
-   the calls to `last-train` and `lastal`, like in the
+ * `--lastdb_args` defaults to `-q -c -R01` , , like in the
    [LAST cookbook](https://gitlab.com/mcfrith/last/-/blob/main/doc/last-cookbook.rst).
+
+ * `--train_args` defaults to `--codon -X1` .
+
+ * `--lastal_args` defaults to `-D1e9 -m100 -K1 -p` . 
+
+ * `--format` defaults to `gff` . Can be converted to a standard GFF with a custom script
+   and uploaded to ZENBU for viewing. 
+
 
 ## Fixed arguments
 
