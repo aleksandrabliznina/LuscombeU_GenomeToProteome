@@ -1,4 +1,4 @@
-# Pairwise Genome Alignment
+# Genome to Proteome Alignment
 
 ## Mandatory parameters
 
