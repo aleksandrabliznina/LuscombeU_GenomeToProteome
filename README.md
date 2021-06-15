@@ -14,7 +14,7 @@
 
 ## Options
 
- * `--lastdb_args` defaults to `-q -c -R01` , , like in the
+ * `--lastdb_args` defaults to `-q -c -R01` , like in the
    [LAST cookbook](https://gitlab.com/mcfrith/last/-/blob/main/doc/last-cookbook.rst).
 
  * `--train_args` defaults to `--codon -X1` .
