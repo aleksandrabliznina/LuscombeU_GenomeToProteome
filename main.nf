@@ -5,7 +5,7 @@ nextflow.enable.dsl = 2
 include { LAST_LASTDB                  } from './modules/nf-core/software/last/lastdb/main.nf'     addParams( options: ['args': "${params.lastdb_args}"] )
 include { LAST_TRAIN                   } from './modules/nf-core/software/last/train/main.nf'      addParams( options: ['args':"${params.train_args}"] )
 include { LAST_LASTAL                  } from './modules/nf-core/software/last/lastal/main.nf'     addParams( options: ['args':"${params.lastal_args}"] )
-include { LAST_MAFCONVERT              } from './modules/nf-core/software/last/mafconvert/main.nf' addParams( options: ['format':'gff'] )
+include { LAST_MAFCONVERT              } from './modules/nf-core/software/last/mafconvert/main.nf' addParams( options: [:] )
 
 workflow {
 // input target
@@ -30,6 +30,19 @@ channel
     .map { row -> [ [id:'query'], row] }
     .set { query }
 
+// input format
+//if ( params.format ) {
+//    channel
+//        .value( params.format )
+//        // .map {}
+//        .set { format }
+//} else {
+//    channel
+//        .value( "gff" )
+//        // .map {}
+//        .set { format }
+//}
+
 // Align the genomes
     LAST_LASTDB     ( target )
     LAST_TRAIN      ( query,
@@ -37,5 +50,5 @@ channel
     LAST_LASTAL     ( query,
                       LAST_LASTDB.out.index.map { row -> row[1] },
                       LAST_TRAIN.out.param_file.map { row -> row[1] } )
-    LAST_MAFCONVERT ( LAST_LASTAL.out.maf )
+    LAST_MAFCONVERT ( LAST_LASTAL.out.maf, "gff" )
 }
