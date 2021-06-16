@@ -34,13 +34,13 @@
 
 ### test remote
 
-    nextflow run oist/plessy_pairwiseGenomeComparison -r main -profile oist --input testInput.tsv --target https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/illumina/fasta/contigs.fasta
-    nextflow run oist/plessy_pairwiseGenomeComparison -r main -profile oist --query https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/genome/genome.fasta --target https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/illumina/fasta/contigs.fasta
+    nextflow run aleksandrabliznina/LuscombeU_GenomeToProteome -r main -profile oist --input testInput.tsv --query https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/genome/genome.fasta
+    nextflow run aleksandrabliznina/LuscombeU_GenomeToProteome -r main -profile oist --target https://raw.githubusercontent.com/aleksandrabliznina/LuscombeU_GenomeToProteome/main/sarscov2.protein.fasta --query https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/genome/genome.fasta
 
 ### test locally
 
-    nextflow run ./main.nf -profile oist --input testInput.tsv --target https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/illumina/fasta/contigs.fasta
-    nextflow run ./main.nf -profile oist --query https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/genome/genome.fasta --target https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/illumina/fasta/contigs.fasta
+    nextflow run ./main.nf -profile oist --input testInput.tsv --query https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/genome/genome.fasta
+    nextflow run ./main.nf -profile oist --target https://raw.githubusercontent.com/aleksandrabliznina/LuscombeU_GenomeToProteome/main/sarscov2.protein.fasta --query https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/genome/genome.fasta
 
 
 ## Advanced use

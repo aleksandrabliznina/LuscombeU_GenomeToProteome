@@ -1,3 +1,3 @@
 id	file
-query1	https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/genome/genome.fasta
-query2	https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/genome/genome.fasta
+target1	https://raw.githubusercontent.com/aleksandrabliznina/LuscombeU_GenomeToProteome/main/sarscov2.protein.fasta
+target2	https://raw.githubusercontent.com/aleksandrabliznina/LuscombeU_GenomeToProteome/main/sarscov2.protein.fasta
