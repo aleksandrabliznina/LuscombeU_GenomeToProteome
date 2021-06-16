@@ -31,17 +31,15 @@ channel
     .set { query }
 
 // input format
-//if ( params.format ) {
-//    channel
-//        .value( params.format )
-//        // .map {}
-//        .set { format }
-//} else {
-//    channel
-//        .value( "gff" )
-//        // .map {}
-//        .set { format }
-//}
+if ( params.format ) {
+    channel
+        .value( params.format )
+        .set { format }
+} else {
+    channel
+        .value( "gff" )
+        .set { format }
+}
 
 // Align the genomes
     LAST_LASTDB     ( target )
@@ -50,5 +48,5 @@ channel
     LAST_LASTAL     ( query,
                       LAST_LASTDB.out.index.map { row -> row[1] },
                       LAST_TRAIN.out.param_file.map { row -> row[1] } )
-    LAST_MAFCONVERT ( LAST_LASTAL.out.maf, "gff" )
+    LAST_MAFCONVERT ( LAST_LASTAL.out.maf, format )
 }

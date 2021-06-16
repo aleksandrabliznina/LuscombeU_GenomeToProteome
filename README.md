@@ -22,13 +22,7 @@
  * `--lastal_args` defaults to `-D1e9 -m100 -K1` .
 
  * `--format` defaults to `gff` . Can be converted to a standard GFF with a custom script
-   and uploaded to ZENBU for viewing. 
-
-
-## Fixed arguments
-
- * `--revsym` is hardcoded the call to `last-train` as the DNA strands
-   play equivalent roles in the studied genomes.
+   and uploaded to ZENBU for viewing.
 
 ## Test
 
