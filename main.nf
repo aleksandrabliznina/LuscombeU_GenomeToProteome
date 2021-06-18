@@ -34,10 +34,6 @@ if ( params.format ) {
     channel
         .value( params.format )
         .set { format }
-} else {
-    channel
-        .value( "gff" )
-        .set { format }
 }
 
 // Align the genomes
