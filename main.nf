@@ -27,7 +27,6 @@ if (params.target) {
 channel
     .value( params.query )
     .map { filename -> file(filename, checkIfExists: true) }
-    .map { row -> [ [id:'query'], row] }
     .set { query }
 
 // input format
@@ -44,9 +43,9 @@ if ( params.format ) {
 // Align the genomes
     LAST_LASTDB     ( target )
     LAST_TRAIN      ( query,
-                      LAST_LASTDB.out.index.map { row -> row[1] } )
+                      LAST_LASTDB.out.index )
     LAST_LASTAL     ( query,
-                      LAST_LASTDB.out.index.map { row -> row[1] },
+                      LAST_LASTDB.out.index,
                       LAST_TRAIN.out.param_file.map { row -> row[1] } )
     LAST_MAFCONVERT ( LAST_LASTAL.out.maf, format )
 }

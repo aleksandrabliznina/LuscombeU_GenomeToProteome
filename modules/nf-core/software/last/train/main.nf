@@ -19,8 +19,8 @@ process LAST_TRAIN {
     }
 
     input:
-    tuple val(meta), path(fastx)
-    path  index
+    path fastx
+    tuple val(meta), path(index)
 
     output:
     tuple val(meta), path("*.par"), emit: param_file
@@ -37,7 +37,7 @@ process LAST_TRAIN {
         -P $task.cpus \\
         ${index}/\$INDEX_NAME \\
         $fastx \\
-        > ${prefix}.\$INDEX_NAME.par
+        > ${prefix}.par
 
     lastdb --version | sed 's/lastdb //' > ${software}.version.txt
     """

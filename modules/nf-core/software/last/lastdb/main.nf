@@ -22,18 +22,18 @@ process LAST_LASTDB {
     tuple val(meta), path(fastx)
 
     output:
-    tuple val(meta), path("lastdb"), emit: index
+    tuple val(meta), path("lastdb.${meta.id}"), emit: index
     path "*.version.txt"           , emit: version
 
     script:
     def software = getSoftwareName(task.process)
     def prefix   = options.suffix ? "${meta.id}${options.suffix}" : "${meta.id}"
     """
-    mkdir lastdb
+    mkdir lastdb.${meta.id}
     lastdb \\
         $options.args \\
         -P $task.cpus \\
-        lastdb/${prefix} \\
+        lastdb.${meta.id}/${prefix} \\
         $fastx
 
     echo \$(lastdb --version 2>&1) | sed 's/lastdb //' > ${software}.version.txt

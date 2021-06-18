@@ -19,8 +19,8 @@ process LAST_LASTAL {
     }
 
     input:
-    tuple val(meta), path(fastx)
-    path index
+    path fastx
+    tuple val(meta), path(index)
     path param_file
 
     output:
@@ -39,7 +39,7 @@ process LAST_LASTAL {
         -P $task.cpus \\
         ${index}/\$INDEX_NAME \\
         $fastx \\
-        | gzip --no-name > ${prefix}.\$INDEX_NAME.maf.gz
+        | gzip --no-name > ${prefix}.maf.gz
     # gzip needs --no-name otherwise it puts a timestamp in the file,
     # which makes its checksum non-reproducible.
 
